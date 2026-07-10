@@ -1,4 +1,4 @@
-name: My First GitHub Action
+name: CI Pipeline
 
 on:
   push:
@@ -6,9 +6,17 @@ on:
       - main
 
 jobs:
-  hello-job:
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Hello
-        run: echo "Hello from GitHub Actions!"
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Show Current Directory
+        run: pwd
+
+      - name: List Repository Files
+        run: ls -la
